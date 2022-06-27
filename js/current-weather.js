@@ -1,7 +1,7 @@
 import weather from '../data/current-weather.js' //importando data del clima
 
-function setCurrentCity($el, city){ //contenedor y ciudad
-    $el.textContent = city
+function setCurrentCity($element, city){ //container and city
+    $element.textContent = city
 }
 
 function configCurrentWeather(weather){
@@ -10,12 +10,9 @@ function configCurrentWeather(weather){
     //city
     const $currentWeatherCity = document.querySelector('#current-weather-city')
     const city = weather.name
-
     setCurrentCity($currentWeatherCity, city)
-    
-    //const $currentWeatherCity = document.querySelector('#current-weather-city')
-    //$currentWeatherCity.textContent = weather.name
-    debugger
+        
+    //debugger
     //temp
     //background
 }
