@@ -17,12 +17,12 @@ function setCurrentTemp($element, temp){
     $element.textContent = formatTemp(temp)
 }
 
-function solarStatus(sunriseTime, sunsetTime){
+function solarStatus(sunriseTime, sunsetTime ){
     const currentHours = new Date().getHours()
     const sunriseHours = sunriseTime.getHours()
     const sunsetHours = sunsetTime.getHours()
 
-    if (currentHours < sunriseHours|| currentHours > sunsetHours){
+    if (currentHours < sunriseHours || currentHours > sunsetHours){
         return 'night'
     }
     return 'morning'
@@ -30,7 +30,6 @@ function solarStatus(sunriseTime, sunsetTime){
 
 function setBackground($element, solarStatus){
     $element.style.backgroundImage = `url(./images/${solarStatus}-drizzle.jpg)`
-    
 }
 function configCurrentWeather(weather){
     //loader
@@ -51,7 +50,6 @@ function configCurrentWeather(weather){
     //background
     const sunriseTime  = new Date(weather.sys.sunrise * 1000) //Amanece
     const sunsetTime = new Date(weather.sys.sunset * 1000) //Anochese
-    debugger
     const $app = document.querySelector('#app')
     setBackground($app, solarStatus(sunriseTime, sunsetTime))
 
