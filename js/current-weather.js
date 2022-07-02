@@ -1,6 +1,7 @@
 import weather from '../data/current-weather.js' //importando data del clima
 import {formatDate, formatTemp} from './utils/format-data.js'
 
+
 function setCurrentCity($element, city){ //container, city
     $element.textContent = city
 }
@@ -16,6 +17,21 @@ function setCurrentTemp($element, temp){
     $element.textContent = formatTemp(temp)
 }
 
+function solarStatus(sunriseTime, sunsetTime){
+    const currentHours = new Date().getHours()
+    const sunriseHours = sunriseTime.getHours()
+    const sunsetHours = sunsetTime.getHours()
+
+    if (currentHours < sunriseHours|| currentHours > sunsetHours){
+        return 'night'
+    }
+    return 'morning'
+}
+
+function setBackground($element, solarStatus){
+    $element.style.backgroundImage = `url(./images/${solarStatus}-drizzle.jpg)`
+    
+}
 function configCurrentWeather(weather){
     //loader
     //Date
@@ -33,6 +49,12 @@ function configCurrentWeather(weather){
     setCurrentTemp($currentWeatherTemp, temp)
     
     //background
+    const sunriseTime  = new Date(weather.sys.sunrise * 1000) //Amanece
+    const sunsetTime = new Date(weather.sys.sunset * 1000) //Anochese
+    debugger
+    const $app = document.querySelector('#app')
+    setBackground($app, solarStatus(sunriseTime, sunsetTime))
+
 }
 export default function currentWeather(){
     //GEO //API - weather //config
