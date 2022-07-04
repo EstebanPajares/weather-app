@@ -1,6 +1,8 @@
 import weather from '../data/current-weather.js' //importando data del clima
-import {formatDate, formatTemp} from './utils/format-data.js'
+import { formatDate, formatTemp } from './utils/format-data.js'
+import { weatherConditionsCodes } from './constants.js'
 
+//weatherConditionsCodes[]
 
 function setCurrentCity($element, city){ //container, city
     $element.textContent = city
@@ -28,8 +30,9 @@ function solarStatus(sunriseTime, sunsetTime ){
     return 'morning'
 }
 
-function setBackground($element, solarStatus){
-    $element.style.backgroundImage = `url(./images/${solarStatus}-drizzle.jpg)`
+function setBackground($element, conditionCode, solarStatus){
+    const weatherType = weatherConditionsCodes[conditionCode]
+    $element.style.backgroundImage = `url(./images/${solarStatus}-${weatherType}.jpg)`
 }
 function configCurrentWeather(weather){
     //loader
@@ -51,7 +54,8 @@ function configCurrentWeather(weather){
     const sunriseTime  = new Date(weather.sys.sunrise * 1000) //Amanece
     const sunsetTime = new Date(weather.sys.sunset * 1000) //Anochese
     const $app = document.querySelector('#app')
-    setBackground($app, solarStatus(sunriseTime, sunsetTime))
+    const conditionCode = String(weather.weather[0].id).charAt(0)
+    setBackground($app, conditionCode, solarStatus(sunriseTime, sunsetTime))
 
 }
 export default function currentWeather(){
