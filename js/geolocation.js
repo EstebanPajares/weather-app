@@ -10,10 +10,22 @@ function geolocationSupport(){
 
 export function getCurrentPosition(){
     if(!geolocationSupport()) throw new Error('No hay soporte de geolocalización en tu navegador')
-   
-    navigator.geolocation.getCurrentPosition((position)=>{
-        const lat = position.coords.latitude
-        const lon = position.coords.longitude
-        console.log(lat, lon)
+
+    //Instancia de Promesa // Recibe los metodos ---- .then, .catch
+    
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition((position)=>{ //Primer parámetro
+            const lat = position.coords.latitude
+            const lon = position.coords.longitude
+            resolve({
+                lat,
+                lon
+            })
+            console.log(lat, lon)
+            console.log('Esto es getCurrentPosition')
+        }, () =>{ //Segundo parámetro --- método reject
+            reject('No hemos podido obtener tu ubicación')
+        }, {})//Tercer parámetro -- Objeto de config
     })
+   
 }

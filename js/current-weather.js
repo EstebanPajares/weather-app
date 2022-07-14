@@ -68,8 +68,18 @@ function configCurrentWeather(weather){
 }
 export default function currentWeather(){
     //GEO //API - weather //config
+    console.log('Esto es ANTES DE  getCurrentPosition')
+    //const latlon = getCurrentPosition()
     getCurrentPosition()
+    //Si devuelve resolve
+    .then((data)=>{
+        console.log('Hemos triunfado', data)
+    })
+    //Si devuelve reject
+    .catch((message) => {
+        console.log(message)
+    })
+    console.log('Esto es DESPUES DE  getCurrentPosition')
     configCurrentWeather(weather)
     console.log(weather)
-
 }
