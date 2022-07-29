@@ -1,7 +1,7 @@
 import weather from '../data/current-weather.js' //importando data del clima
 import { formatDate, formatTemp } from './utils/format-data.js'
 import { weatherConditionsCodes } from './constants.js'
-import {getCurrentPosition} from './geolocation.js'
+import {getLatLon} from './geolocation.js'
 
 //weatherConditionsCodes[]
 
@@ -69,12 +69,15 @@ function configCurrentWeather(weather){
 export default async function currentWeather(){
     //GEO //API - weather //config
     console.log('Esto es ANTES DE  getCurrentPosition')
-    try{
-        const  { lat, lon } =  await getCurrentPosition()
+    const  { lat, lon, isError } =  await getLatLon()
+    if (isError) return console.log('Ha ocurrido un error ubicandote')
+    console.log(lat, lon)
+    /* try{
+        const  { lat, lon } =  await getLatLon()
         console.log(lat, lon)
     } catch (err){
         console.log(err)
-    }
+    } */
 
     /* getCurrentPosition()
     //Si devuelve resolve
@@ -88,4 +91,5 @@ export default async function currentWeather(){
     /* console.log('Esto es DESPUES DE  getCurrentPosition')
     configCurrentWeather(weather)
     console.log(weather) */
+    configCurrentWeather(weather)
 }

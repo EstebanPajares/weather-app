@@ -24,10 +24,11 @@ export function getCurrentPosition(options = defaultOptions){
         navigator.geolocation.getCurrentPosition((position)=>{ //Primer parámetro
             const lat = position.coords.latitude
             const lon = position.coords.longitude
-            resolve({
+            resolve(position)
+           /*  resolve({
                 lat,
                 lon
-            })
+            }) */
             /* console.log(lat, lon)
             console.log('Esto es getCurrentPosition') */
         }, () =>{ //Segundo parámetro --- método reject
@@ -35,4 +36,13 @@ export function getCurrentPosition(options = defaultOptions){
         }, options)//Tercer parámetro -- Objeto de config
     })
    
+}
+
+export async function getLatLon(options = defaultOptions){
+    try{
+        const { coords: { latitude: lat, longitude: lon}} = await getCurrentPosition(options)
+        return { lat, lon, isError: false}
+    } catch{
+        return { isError: true, lat: null, lon: null }
+    }
 }
