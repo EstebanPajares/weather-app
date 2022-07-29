@@ -8,7 +8,14 @@ function geolocationSupport(){
     return 'geolocation' in navigator
 }
 
-export function getCurrentPosition(){
+//Configuration
+const defaultOptions = {
+    enableHighAccuracy : true,
+    timeout : 5000,
+    maximumAge : 1000000,
+}
+
+export function getCurrentPosition(options = defaultOptions){
     if(!geolocationSupport()) throw new Error('No hay soporte de geolocalización en tu navegador')
 
     //Instancia de Promesa // Recibe los metodos ---- .then, .catch
@@ -21,11 +28,11 @@ export function getCurrentPosition(){
                 lat,
                 lon
             })
-            console.log(lat, lon)
-            console.log('Esto es getCurrentPosition')
+            /* console.log(lat, lon)
+            console.log('Esto es getCurrentPosition') */
         }, () =>{ //Segundo parámetro --- método reject
             reject('No hemos podido obtener tu ubicación')
-        }, {})//Tercer parámetro -- Objeto de config
+        }, options)//Tercer parámetro -- Objeto de config
     })
    
 }

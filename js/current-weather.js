@@ -66,11 +66,17 @@ function configCurrentWeather(weather){
     setBackground($app, conditionCode, solarStatus(sunriseTime, sunsetTime))
 
 }
-export default function currentWeather(){
+export default async function currentWeather(){
     //GEO //API - weather //config
     console.log('Esto es ANTES DE  getCurrentPosition')
-    //const latlon = getCurrentPosition()
-    getCurrentPosition()
+    try{
+        const  { lat, lon } =  await getCurrentPosition()
+        console.log(lat, lon)
+    } catch (err){
+        console.log(err)
+    }
+
+    /* getCurrentPosition()
     //Si devuelve resolve
     .then((data)=>{
         console.log('Hemos triunfado', data)
@@ -78,8 +84,8 @@ export default function currentWeather(){
     //Si devuelve reject
     .catch((message) => {
         console.log(message)
-    })
-    console.log('Esto es DESPUES DE  getCurrentPosition')
+    }) */
+    /* console.log('Esto es DESPUES DE  getCurrentPosition')
     configCurrentWeather(weather)
-    console.log(weather)
+    console.log(weather) */
 }
