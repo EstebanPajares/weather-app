@@ -2,6 +2,7 @@ import weather from '../data/current-weather.js' //importando data del clima
 import { formatDate, formatTemp } from './utils/format-data.js'
 import { weatherConditionsCodes } from './constants.js'
 import {getLatLon} from './geolocation.js'
+import { getCurrentWeather } from './services/weather.js'
 
 //weatherConditionsCodes[]
 
