@@ -1,3 +1,5 @@
+export const API_KEY = 'c5df892d0d507fe5c6896981e9745004' //No cambia
+export const BASE_API = 'https://api.openweathermap.org/data/2.5/'
 
 //Diccionario de constantes
 export const weatherConditionsCodes = {
