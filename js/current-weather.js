@@ -1,4 +1,4 @@
-/* import weather from '../data/current-weather.js' */ //importando data del clima
+/* import weather from '../data/current-weather.js' */ //importando data del clima - datos de prueba
 import { formatDate, formatTemp } from './utils/format-data.js'
 import { weatherConditionsCodes } from './constants.js'
 import {getLatLon} from './geolocation.js'
@@ -43,8 +43,19 @@ function setBackground($element, conditionCode, solarStatus){
     } */
     $element.style.backgroundImage = `url(./images/${solarStatus}-${weatherType}${size}.jpg)`
 }
+
+function showCurrentWeather($app, $loading){
+    $app.hidden = false,
+    $loading.hidden = true
+
+}
+
 function configCurrentWeather(weather){
+    const $app = document.querySelector('#app')
+    const $loading = document.querySelector('#loading')
     //loader
+    showCurrentWeather($app, $loading)
+
     //Date
     const $currentWeatherDate = document.querySelector('#current-weather-date')
     setCurrentDate($currentWeatherDate)
@@ -62,7 +73,7 @@ function configCurrentWeather(weather){
     //background
     const sunriseTime  = new Date(weather.sys.sunrise * 1000) //Amanece
     const sunsetTime = new Date(weather.sys.sunset * 1000) //Anochese
-    const $app = document.querySelector('#app')
+    
     const conditionCode = String(weather.weather[0].id).charAt(0)
     setBackground($app, conditionCode, solarStatus(sunriseTime, sunsetTime))
 
@@ -92,6 +103,8 @@ export default async function currentWeather(){
     /* console.log('Esto es DESPUES DE  getCurrentPosition')
     configCurrentWeather(weather)
     console.log(weather) */
+    
+    //Desestructurar un objeto
     const { isError: currentWeatherError, data: weather} = await getCurrentWeather(lat, lon)
     if (currentWeatherError) return console.log('Oh! ha ocurrido un error trayendo los datos del clima')
     configCurrentWeather(weather)

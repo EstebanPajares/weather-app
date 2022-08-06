@@ -3,7 +3,7 @@ import { BASE_API, API_KEY } from '../constants.js'
 
 // fetch API - conectando el servicio externo con nuestra aplicación
 export async function getCurrentWeather(lat, lon){
-    const response = await fetch(`${BASE_API}weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
+    const response = await fetch(`${BASE_API}weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`) // url
     if (!response.ok) return {
         isError: true, 
         data: null,
