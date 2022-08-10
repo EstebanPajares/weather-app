@@ -1,4 +1,4 @@
 
 export function getViewport(){
-  windo.innerHeight  
+  return window.innerHeight  //Obteniendo el area visible del navegador
 }
