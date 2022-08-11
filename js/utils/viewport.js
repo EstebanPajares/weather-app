@@ -1,4 +1,27 @@
 
+export function setViewportSize($el){
+  const ViewportBlockSize = getViewport()
+  $el.style.blockSize = `${ViewportBlockSize}px`
+
+}
+
+//Obteniendo el area visible del navegador
 export function getViewport(){
-  return window.innerHeight  //Obteniendo el area visible del navegador
+  return window.innerHeight  //Retorna el alto del área visible del navegador 
+}
+
+//O
+export function onViewporResize(callback){
+  window.addEventListener('resize', callback)
+  
+}
+export function offViewporResize(){
+  window.removeEventListener('resize', callback)
+}
+
+export function ViewportSize($el){
+  setViewportSize($el)
+
+  onViewporResize(()=> setViewportSize($el))
+
 }
