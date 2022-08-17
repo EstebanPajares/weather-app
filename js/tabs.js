@@ -1,0 +1,1 @@
+console.log('Renderizando días de la semana')
