@@ -1,4 +1,4 @@
-
+// Prediccion de clima semanal
 import { getWeeklyWetaher } from "./services/weather.js";
 import {getLatLon} from './geolocation.js'
 

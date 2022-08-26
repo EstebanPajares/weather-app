@@ -13,7 +13,7 @@ export async function getCurrentWeather(lat, lon){
         isError: false,
         data,
     }
-    debugger
+    
 }
 //Prediccion semanal del clima
 export async function getWeeklyWetaher(lat, lon){
@@ -27,6 +27,6 @@ export async function getWeeklyWetaher(lat, lon){
         isError: false,
         data,
     }
-    debugger
+    
 }
 
