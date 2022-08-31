@@ -8,12 +8,12 @@ import { createDOM } from './utils/dom.js'
 function tabPanelTemplate(id){
    return `
     <div class="tabPanel" tabindex="0" aria-labelledby="tab-${id}">
-    <div class="dayWeather" id="dayWeather-${id}">
-      <ul style = "color:white" class="dayWeather-list" id="dayWeather-list-${id}">
-       Tab Panel ${id}
-      </ul>
+        <div class="dayWeather" id="dayWeather-${id}">
+            <ul style="color:white" class="dayWeather-list" id="dayWeather-list-${id}">
+                Tab Panel ${id}
+            </ul>
+        </div>
     </div>
-  </div>
     `
 }
 
