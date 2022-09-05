@@ -4,6 +4,7 @@ import {getLatLon} from './geolocation.js'
 import { formatWeekList } from './utils/format-data.js'
 import { createDOM } from './utils/dom.js'
 import { createPeriodTime } from './period-time.js'
+import draggble from "./draggble.js";
 
 //Renderizando los tabPanels
 function tabPanelTemplate(id){
@@ -27,7 +28,6 @@ function createTabPanel(id){
 }
 
 function configWeeklyWeather(weeklist){
-    //const $container = document.querySelector('.weeklyWeather')
     const $container = document.querySelector('.tabs')
     weeklist.forEach((day, index)=>{
         //const $el = document.createElement('h2')
@@ -40,11 +40,12 @@ function configWeeklyWeather(weeklist){
             $panel.querySelector('.dayWeather-list').append(createPeriodTime(weather))
         })
     })
-
+    
 }
 
 // Prediccion de clima semanal
 export default async function weeklyWeather(){
+    const $container = document.querySelector('.weeklyWeather')
     const  { lat, lon, isError } =  await getLatLon()
     if (isError) return console.log('Ha ocurrido un error ubicandote')
     
@@ -52,4 +53,5 @@ export default async function weeklyWeather(){
     if (weeklyWeatherError) return console.log('Oh! ha ocurrido un error trayendo los datos del pronóstico del clima')
     const weeklist = formatWeekList(weather.list)
     configWeeklyWeather(weeklist)
+    draggble($container)
 }
