@@ -22,6 +22,8 @@ export default function draggble($element, config = defaultConfig){
     
     isOpen ? open() : close() //Op ternario
 
+    let startY = 0
+
     //Eventos a escuchar dentro del marker
     $marker.addEventListener('click', handleClick)
     $marker.addEventListener('pointerdown', handlePointerDown)
@@ -30,8 +32,9 @@ export default function draggble($element, config = defaultConfig){
     $marker.addEventListener('pointercancel', handlePointerCancel)
     $marker.addEventListener('pointermove', handlePointerMove)
 
-    function handlePointerDown(){
+    function handlePointerDown(event){
         logger('Pointer DOWN')
+        startDrag(event)
     }
     function handlePointerUp(){
         logger('Pointer UP')
@@ -45,14 +48,24 @@ export default function draggble($element, config = defaultConfig){
         logger('Pointer Cancel')
         
     }
-    function handlePointerMove(){
+    function handlePointerMove(event){
         logger('Pointer Move')
+        drag(event)
 
     }
 
     function handleClick(event){
         logger('CLICK')
         toggle()
+    }
+
+    function pageY(event){
+        return event.pageY || event.touches[0].pageY // Para el touch 
+    }
+
+    function startDrag(event){
+        isDragging = true
+        startY = pageY(event)
     }
 
     function toggle(){
@@ -89,5 +102,13 @@ export default function draggble($element, config = defaultConfig){
     function setWidgetPosition(value){
         $element.style.marginBottom = `-${value}px` //movemos el elemento en negativo Y
     }
+    
+    function drag(event){
+        const cursorY = pageY(event)
+        const movementY = cursorY - startY
+        widgetPosition = widgetPosition + movementY
+        logger(movementY)
+        startY = cursorY
+        setWidgetPosition(widgetPosition)
+    }
 }
-
