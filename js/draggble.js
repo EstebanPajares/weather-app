@@ -32,20 +32,25 @@ export default function draggble($element, config = defaultConfig){
     $marker.addEventListener('pointercancel', handlePointerCancel)
     $marker.addEventListener('pointermove', handlePointerMove)
 
+    if(config.animatable){
+        setAnimations()
+    }
+
     function handlePointerDown(event){
         logger('Pointer DOWN')
         startDrag(event)
     }
     function handlePointerUp(){
         logger('Pointer UP')
-        
+        dragEnd()
     }
     function handlePointerOut(){
         logger('Pointer OUT')
-        
+        dragEnd()
     }
     function handlePointerCancel(){
         logger('Pointer Cancel')
+        dragEnd()
         
     }
     function handlePointerMove(event){
@@ -66,6 +71,24 @@ export default function draggble($element, config = defaultConfig){
     function startDrag(event){
         isDragging = true
         startY = pageY(event)
+    }
+
+    function setAnimations(){
+        $element.style.transition = 'margin-bottom .3s'
+    }
+
+    function bounce(){ //rebote
+        if (widgetPosition < ELEMENT_BLOCK_SIZE/2){
+            return open()
+        }
+        return close()
+
+    }
+
+    function dragEnd(){
+        logger('DRAG END')
+        isDragging = false
+        bounce()
     }
 
     function toggle(){
@@ -102,7 +125,7 @@ export default function draggble($element, config = defaultConfig){
     function setWidgetPosition(value){
         $element.style.marginBottom = `-${value}px` //movemos el elemento en negativo Y
     }
-    
+
     function drag(event){
         const cursorY = pageY(event)
         const movementY = cursorY - startY
