@@ -3,6 +3,7 @@
   padding-inline: 1rem;
   inline-size: 100vw;
   box-sizing: border-box;
+  display: inline-block;
 }
 
 .tab {

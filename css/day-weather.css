@@ -51,4 +51,11 @@
 }
 
 .dayWeather-summary > * {
+  color: var(--white);
+  margin-inline-start: 1rem;
+  margin-block-end: 1rem;
+}
+
+.dayWeather-summary p span{
+  font-weight: bold;
 }
