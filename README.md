@@ -1,6 +1,6 @@
 # weatherApp
 
-WeatherApp, es un proyecto implementado desde un diseño en figma, mediante el: [curso Esencial de JavaScript y el DOM ](https://leonidasesteban.com/cursos/javascript) cuyo propósito es descubrir el pronóstico del clima y programar tus actividades en relación a ello.
+WeatherApp, es un proyecto implementado desde un diseño en figma, mediante el [curso Esencial de JavaScript y el DOM ](https://leonidasesteban.com/cursos/javascript), cuyo propósito es descubrir el pronóstico del clima y programar tus actividades en relación a ello.
 
 ## Desktop
 
@@ -12,13 +12,12 @@ WeatherApp, es un proyecto implementado desde un diseño en figma, mediante el: 
 
 
 ### Links
-- [Website](https://github.com/EstebanPajares/weather-app)
-- [Project weatherApp](https://weather-app-teal-six-76.vercel.app/)
+- [Website Project weatherApp](https://weather-app-teal-six-76.vercel.app/)
 
 ## Technologies
 
 - HTML
-- CSS3
+- CSS
 - Responsive Design
 - JavaScript
 - Promises
