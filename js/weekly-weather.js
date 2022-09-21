@@ -1,10 +1,12 @@
 //Pedir información del API
 import { getWeeklyWetaher } from "./services/weather.js";
-import {getLatLon} from './geolocation.js'
+import { getLatLon } from './geolocation.js'
 import { formatWeekList } from './utils/format-data.js'
 import { createDOM } from './utils/dom.js'
 import { createPeriodTime } from './period-time.js'
 import draggble from "./draggble.js";
+//import { createWeatherSummary } from './weather-summary.js'
+
 
 //Renderizando los tabPanels
 function tabPanelTemplate(id){
@@ -27,6 +29,8 @@ function createTabPanel(id){
     return $panel
 }
 
+
+
 function configWeeklyWeather(weeklist){
     const $container = document.querySelector('.tabs')
     weeklist.forEach((day, index)=>{
@@ -34,14 +38,23 @@ function configWeeklyWeather(weeklist){
         //$el.textContent = 'Hola Mundo'
         //$container.append($el) */
         const $panel = createTabPanel(index)
+        
         $container.append($panel)
         //Renderizando el pronóstico del día
         day.forEach((weather, indexWeather)=>{
+
             $panel.querySelector('.dayWeather-list').append(createPeriodTime(weather))
+
+            //$panel.append(createWeatherSummary(weather, index))
+
+        
+            })
+
         })
-    })
-    
 }
+    
+
+
 
 // Prediccion de clima semanal
 export default async function weeklyWeather(){

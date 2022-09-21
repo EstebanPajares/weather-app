@@ -14,6 +14,17 @@ export function formatTemp(value){
     return `${Math.floor(value)}º`
 }
 
+/* export function formatTempMaxMin(value) {
+    return `${value}°`
+  }
+  
+  export function formatSpeed(value) {
+    return `${value} Km-h`
+  }
+  
+  export function formatHumidity(value) {
+    return `${value}%`
+  } */
 
 export function formatWeekList(rawData){
     //const weeklist = [[],[],[]] 
@@ -27,4 +38,5 @@ export function formatWeekList(rawData){
         }
     })
     return weeklist
-}
+} 
+

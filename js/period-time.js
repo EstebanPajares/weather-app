@@ -13,8 +13,7 @@ export function periodTimeTemplate({temp, date, icon, description}){
     `
 }
 
-export function createPeriodTime(weather) {
-    
+export function createPeriodTime(weather) {  
     //temp
     //icon
     //date
@@ -30,7 +29,7 @@ export function createPeriodTime(weather) {
         date,
         icon: weather.weather[0].icon,
         description: weather.weather[0].description
-    }
-    return createDOM(periodTimeTemplate(config))
+    } 
 
+    return createDOM(periodTimeTemplate(config))
 }
