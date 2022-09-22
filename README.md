@@ -8,7 +8,7 @@ WeatherApp, es un proyecto implementado desde un diseño en figma, mediante el [
 
 ## Mobile
 
-![weatherApp on mobile](./design/mobile.png)
+![weatherApp on mobile](./design/mobile.jpeg)
 
 
 ### Links
@@ -22,4 +22,4 @@ WeatherApp, es un proyecto implementado desde un diseño en figma, mediante el [
 - JavaScript
 - Promises
 - Async
-- Geolocations
+- Geolocation
